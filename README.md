@@ -2,7 +2,7 @@
 
 ![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularJS.png)
 
-Special thanks to Bsol Systems Pvt Ltd,Bangalore.
+Special thanks to [Bsol Systems Pvt Ltd, Bangalore](https://www.bsolsystems.com)
 
 ## Purpose
 
