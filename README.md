@@ -1,7 +1,6 @@
-![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularJS.png)
-
-# angularPatterns
 # Angular 1 Patterns and Sample codes
+
+![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularJS.png)
 
 Special thanks to Bsol Systems Pvt Ltd,Bangalore.
 
@@ -26,14 +25,10 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Resolving Promises](#resolving-promises)
   1. [Exception Handling](#exception-handling)
   1. [Naming](#naming)
-  1. [Modularity](#modularity)
-  1. [Startup Logic](#startup-logic)
-  1. [Angular $ Wrapper Services](#angular--wrapper-services)
   1. [JSHint](#js-hint)
   1. [Values](#values)
   1. [Constants](#constants)
   1. [Routing](#routing)
-  1. [Task Automation](#task-automation)
   1. [Angular Docs](#angular-docs)
 
 ## Single Responsibility
@@ -1800,148 +1795,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
 
 **[Back to top](#table-of-contents)**
 
-## Modularity
-
-### Many Small, Self Contained Modules
-###### [Style [Y160](#style-y160)]
-
-  - Create small modules that encapsulate one responsibility.
-
-    *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally. This means we can plug in new features as we develop them.
-
-### Create an App Module
-###### [Style [Y161](#style-y161)]
-
-  - Create an application root module whose role is to pull together all of the modules and features of your application. Name this for your application.
-
-    *Why?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
-
-### Keep the App Module Thin
-###### [Style [Y162](#style-y162)]
-
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
-
-    *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
-
-    *Why?*: The app module becomes a manifest that describes which modules help define the application.
-
-### Feature Areas are Modules
-###### [Style [Y163](#style-y163)]
-
-  - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
-
-    *Why?*: Self contained modules can be added to the application with little or no friction.
-
-    *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
-
-    *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code.
-
-### Reusable Blocks are Modules
-###### [Style [Y164](#style-y164)]
-
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
-
-    *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
-
-### Module Dependencies
-###### [Style [Y165](#style-y165)]
-
-  - The application root module depends on the app specific feature modules and any shared or reusable modules.
-
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
-
-    *Why?*: The main app module contains a quickly identifiable manifest of the application's features.
-
-    *Why?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency in other applications and still work.
-
-    *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
-
-    Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows Angular's dependency rules, and is easy to maintain and scale.
-
-    > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind.
-
-    > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
-
-**[Back to top](#table-of-contents)**
-
-## Startup Logic
-
-### Configuration
-###### [Style [Y170](#style-y170)]
-
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidates include providers and constants.
-
-    *Why?*: This makes it easier to have less places for configuration.
-
-  ```javascript
-  angular
-      .module('app')
-      .config(configure);
-
-  configure.$inject =
-      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
-
-  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
-      exceptionHandlerProvider.configure(config.appErrorPrefix);
-      configureStateHelper();
-
-      toastr.options.timeOut = 4000;
-      toastr.options.positionClass = 'toast-bottom-right';
-
-      ////////////////
-
-      function configureStateHelper() {
-          routerHelperProvider.configure({
-              docTitle: 'NG-Modular: '
-          });
-      }
-  }
-  ```
-
-### Run Blocks
-###### [Style [Y171](#style-y171)]
-
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies). 
-  
-  - Consider using manual bootstrapping techniques, as an alternative for logic that must run prior to running the Angular app.
-
-    *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
-
-    *Why?*: Code directly in a run block can cause race conditions for startup logic, as it does not have a way to communicate when asynchronous code in the run block has completed.
-
-  ```javascript
-  angular
-      .module('app')
-      .run(runBlock);
-
-  runBlock.$inject = ['authenticator', 'translator'];
-
-  function runBlock(authenticator, translator) {
-      authenticator.initialize();
-      translator.initialize();
-  }
-  ```
-
-**[Back to top](#table-of-contents)**
-
-## Angular $ Wrapper Services
-
-### $document and $window
-###### [Style [Y180](#style-y180)]
-
-  - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
-
-    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
-
-### $timeout and $interval
-###### [Style [Y181](#style-y181)]
-
-  - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
-
-    *Why?*: These services are wrapped by Angular and more easily testable and handle Angular's digest cycle thus keeping data binding in sync.
-
-**[Back to top](#table-of-contents)**
-
 ## JS Hint
 
 ### Use an Options File
@@ -2031,13 +1884,13 @@ The purpose of this style guide is to provide guidance on building Angular appli
     ```javascript
     // constants.js
 
-    /* global toastr:false, moment:false */
+    /* creating application level default value for company Id as 2 */
     (function() {
         'use strict';
 
         angular
             .module('app.core')
-            .value('domain', 'http://github.com');            
+            .value('company Id', '2');            
     })();
     ```
 
@@ -2052,20 +1905,20 @@ The purpose of this style guide is to provide guidance on building Angular appli
     ```javascript
     // constants.js
 
-    /* global toastr:false, moment:false */
+    /* creating application level constant value for company Id as 2 */
     (function() {
         'use strict';
 
         angular
             .module('app.core')            
-            .constant('moment', moment);
+            .constant('company Id', '2');
     })();
     ```
 
 ## Difference between Values and Constants
 
-*Value*     : can be re-assigned anywhere in the application after decleration.
-*Constants* : can't be re-assigned in the application after decleration.
+*Value*     : 'can be re-assigned' anywhere in the application after decleration.
+*Constants* : 'can't be re-assigned' in the application after decleration.
 
 ###### [Style [Y241](#style-y241)]
 
@@ -2184,31 +2037,6 @@ Client-side routing is important for creating a navigation flow between views an
     *Why?*: When removing a module or adding a module, the app will only contain routes that point to existing views.
 
     *Why?*: This makes it easy to enable or disable portions of an application without concern over orphaned routes.
-
-**[Back to top](#table-of-contents)**
-
-## Task Automation
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
-
-> Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course](http://jpapa.me/gulpps)
-
-###### [Style [Y400](#style-y400)]
-
-  - Use task automation to list module definition files `*.module.js` before all other application JavaScript files.
-
-    *Why?*: Angular needs the module definitions to be registered before they are used.
-
-    *Why?*: Naming modules with a specific pattern such as `*.module.js` makes it easy to grab them with a glob and list them first.
-
-    ```javascript
-    var clientApp = './src/client/app/';
-
-    // Always grab module files first
-    var files = [
-      clientApp + '**/*.module.js',
-      clientApp + '**/*.js'
-    ];
-    ```
 
 **[Back to top](#table-of-contents)**
 
