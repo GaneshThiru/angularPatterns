@@ -34,7 +34,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [JSCS](#jscs)
-  1. [Values] (#Values)
+  1. [Values] (#values)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Routing](#routing)
