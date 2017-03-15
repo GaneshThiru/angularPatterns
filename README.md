@@ -6,38 +6,50 @@ Special thanks to [Bsol Systems Pvt Ltd, Bangalore](https://www.bsolsystems.com)
 
 ## Purpose
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with Angular.
+If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in.
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
 ## Table of Contents
-
+  1. [what is not AngularJS ?]
+  1. [what is AngularJS ?]
+  1. [Features of AngularJS]
+  1. [Where we can use AngularJS]
+  1. [Development support tools for Angular]
+  1. [What is Gulp?]
+  1. [Lifecycle of Angular Framework]
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)  
+  1. [Naming](#naming)
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
+  1. [Dependency Injection]
   1. [Modules](#modules)
+  1. [Events]
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
+  1. [Services Vs Factory]
   1. [Data Services](#data-services)
+  1. [External API call from Angular Resource ($resource)]
   1. [Directives](#directives)
-  1. [Resolving Promises](#resolving-promises)
-  1. [Exception Handling](#exception-handling)
-  1. [Naming](#naming)
-  1. [JSHint](#js-hint)
+  1. [Filters]  
   1. [Values](#values)
   1. [Constants](#constants)
+  1. [Run Vs Config]
   1. [Routing](#routing)
+  1. [Resolving Promises](#resolving-promises)
+  1. [Exception Handling](#exception-handling)
+  1. [JSHint](#js-hint)
   1. [Angular Docs](#angular-docs)
 
 ## Single Responsibility
 
 ###### [Style [Y001](#style-y001)]
 
-  - Define 1 component per file, recommended to be less than 400 lines of code.
+  - Define 1 component per file.
 
-  *Why?*: One component per file promotes easier unit testing and mocking.
+  *Why?*: One component per file promotes easier unit testing.
 
   *Why?*: One component per file makes it far easier to read, maintain, and avoid collisions with teams in source control.
 
@@ -95,7 +107,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
 ### JavaScript Scopes
 ###### [Style [Y010](#style-y010)]
 
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
+  - Wrap Angular components in an 'Immediately Invoked Function Expression (IIFE)'.
 
   *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
 
@@ -351,32 +363,20 @@ The purpose of this style guide is to provide guidance on building Angular appli
   }
   ```
 
-  Note: You can avoid any [jshint](http://jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
-
-  ```javascript
-  /* jshint validthis: true */
-  var vm = this;
-  ```
-
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Example :
 
   ```html
   <input ng-model="vm.title"/>
   ```
 
   ```javascript
-  function SomeController($scope, $log) {
+  function SomeController($scope) {
       var vm = this;
       vm.title = 'Some Title';
-
-      $scope.$watch('vm.title', function(current, original) {
-          $log.info('vm.title was %s', original);
-          $log.info('vm.title is now %s', current);
-      });
   }
   ```
 
-  Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability. Avoid overly verbose names that are cumbersome to type.
+  Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability.
 
   ```html
   <!-- avoid -->
@@ -440,177 +440,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
       function search() {
         /* */
       }
-  }
-  ```
-
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
-
-  ```javascript
-  /* avoid */
-  function SessionsController(data) {
-      var vm = this;
-
-      vm.gotoSession = gotoSession;
-      vm.refresh = function() {
-          /**
-           * lines
-           * of
-           * code
-           * affects
-           * readability
-           */
-      };
-      vm.search = search;
-      vm.sessions = [];
-      vm.title = 'Sessions';
-  }
-  ```
-
-  ```javascript
-  /* recommended */
-  function SessionsController(sessionDataService) {
-      var vm = this;
-
-      vm.gotoSession = gotoSession;
-      vm.refresh = sessionDataService.refresh; // 1 liner is OK
-      vm.search = search;
-      vm.sessions = [];
-      vm.title = 'Sessions';
-  }
-  ```
-
-### Function Declarations to Hide Implementation Details
-###### [Style [Y034](#style-y034)]
-
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
-
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
-
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
-
-    *Why?*: Function declarations are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
-
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
-
-    *Why?*: Order is critical with function expressions
-
-  ```javascript
-  /**
-   * avoid
-   * Using function expressions.
-   */
-  function AvengersController(avengersService, logger) {
-      var vm = this;
-      vm.avengers = [];
-      vm.title = 'Avengers';
-
-      var activate = function() {
-          return getAvengers().then(function() {
-              logger.info('Activated Avengers View');
-          });
-      }
-
-      var getAvengers = function() {
-          return avengersService.getAvengers().then(function(data) {
-              vm.avengers = data;
-              return vm.avengers;
-          });
-      }
-
-      vm.getAvengers = getAvengers;
-
-      activate();
-  }
-  ```
-
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
-
-  ```javascript
-  /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
-   */
-  function AvengersController(avengersService, logger) {
-      var vm = this;
-      vm.avengers = [];
-      vm.getAvengers = getAvengers;
-      vm.title = 'Avengers';
-
-      activate();
-
-      function activate() {
-          return getAvengers().then(function() {
-              logger.info('Activated Avengers View');
-          });
-      }
-
-      function getAvengers() {
-          return avengersService.getAvengers().then(function(data) {
-              vm.avengers = data;
-              return vm.avengers;
-          });
-      }
-  }
-  ```
-
-### Defer Controller Logic to Services
-###### [Style [Y035](#style-y035)]
-
-  - Defer logic in a controller by delegating to services and factories.
-
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
-
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
-
-    *Why?*: Removes dependencies and hides implementation details from the controller.
-
-    *Why?*: Keeps the controller slim, trim, and focused.
-
-  ```javascript
-
-  /* avoid */
-  function OrderController($http, $q, config, userInfo) {
-      var vm = this;
-      vm.checkCredit = checkCredit;
-      vm.isCreditOk;
-      vm.total = 0;
-
-      function checkCredit() {
-          var settings = {};
-          // Get the credit service base URL from config
-          // Set credit service required headers
-          // Prepare URL query string or data object with request data
-          // Add user-identifying info so service gets the right credit limit for this user.
-          // Use JSONP for this browser if it doesn't support CORS
-          return $http.get(settings)
-              .then(function(data) {
-               // Unpack JSON data in the response object
-                 // to find maxRemainingAmount
-                 vm.isCreditOk = vm.total <= maxRemainingAmount
-              })
-              .catch(function(error) {
-                 // Interpret error
-                 // Cope w/ timeout? retry? try alternate service?
-                 // Re-reject with appropriate error for a user to see
-              });
-      };
-  }
-  ```
-
-  ```javascript
-  /* recommended */
-  function OrderController(creditService) {
-      var vm = this;
-      vm.checkCredit = checkCredit;
-      vm.isCreditOk;
-      vm.total = 0;
-
-      function checkCredit() {
-         return creditService.isOrderTotalOk(vm.total)
-            .then(function(isOk) { vm.isCreditOk = isOk; })
-            .catch(showError);
-      };
   }
   ```
 
@@ -1106,212 +935,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
   ```
 
     Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
-
-### Manipulate DOM in a Directive
-###### [Style [Y072](#style-y072)]
-
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow.
-
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
-
-### Provide a Unique Directive Prefix
-###### [Style [Y073](#style-y073)]
-
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which would be declared in HTML as `acme-sales-customer-info`.
-
-    *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company.
-
-    Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
-
-### Restrict to Elements and Attributes
-###### [Style [Y074](#style-y074)]
-
-  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
-
-    *Why?*: It makes sense.
-
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
-
-    Note: EA is the default for Angular 1.3 +
-
-  ```html
-  <!-- avoid -->
-  <div class="my-calendar-range"></div>
-  ```
-
-  ```javascript
-  /* avoid */
-  angular
-      .module('app.widgets')
-      .directive('myCalendarRange', myCalendarRange);
-
-  function myCalendarRange() {
-      var directive = {
-          link: link,
-          templateUrl: '/template/is/located/here.html',
-          restrict: 'C'
-      };
-      return directive;
-
-      function link(scope, element, attrs) {
-        /* */
-      }
-  }
-  ```
-
-  ```html
-  <!-- recommended -->
-  <my-calendar-range></my-calendar-range>
-  <div my-calendar-range></div>
-  ```
-
-  ```javascript
-  /* recommended */
-  angular
-      .module('app.widgets')
-      .directive('myCalendarRange', myCalendarRange);
-
-  function myCalendarRange() {
-      var directive = {
-          link: link,
-          templateUrl: '/template/is/located/here.html',
-          restrict: 'EA'
-      };
-      return directive;
-
-      function link(scope, element, attrs) {
-        /* */
-      }
-  }
-  ```
-
-### Directives and ControllerAs
-###### [Style [Y075](#style-y075)]
-
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
-
-    *Why?*: It makes sense and it's not difficult.
-
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place.
-
-    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
-
-    Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
-
-  ```html
-  <div my-example max="77"></div>
-  ```
-
-  ```javascript
-  angular
-      .module('app')
-      .directive('myExample', myExample);
-
-  function myExample() {
-      var directive = {
-          restrict: 'EA',
-          templateUrl: 'app/feature/example.directive.html',
-          scope: {
-              max: '='
-          },
-          link: linkFunc,
-          controller: ExampleController,
-          // note: This would be 'ExampleController' (the exported controller name, as string)
-          // if referring to a defined controller in its separate file.
-          controllerAs: 'vm',
-          bindToController: true // because the scope is isolated
-      };
-
-      return directive;
-
-      function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.min = %s *** should be undefined', scope.min);
-          console.log('LINK: scope.max = %s *** should be undefined', scope.max);
-          console.log('LINK: scope.vm.min = %s', scope.vm.min);
-          console.log('LINK: scope.vm.max = %s', scope.vm.max);
-      }
-  }
-
-  ExampleController.$inject = ['$scope'];
-
-  function ExampleController($scope) {
-      // Injecting $scope just for comparison
-      var vm = this;
-
-      vm.min = 3;
-
-      console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
-      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
-      console.log('CTRL: vm.min = %s', vm.min);
-      console.log('CTRL: vm.max = %s', vm.max);
-  }
-  ```
-
-  ```html
-  <!-- example.directive.html -->
-  <div>hello world</div>
-  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
-  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
-  ```
-
-    Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
-
-  ```javascript
-  // Alternative to above example
-  function linkFunc(scope, el, attr, vm) {
-      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
-      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
-      console.log('LINK: vm.min = %s', vm.min);
-      console.log('LINK: vm.max = %s', vm.max);
-  }
-  ```
-
-###### [Style [Y076](#style-y076)]
-
-  - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
-
-    *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
-
-    Note: `bindToController` was introduced in Angular 1.3.0.
-
-  ```html
-  <div my-example max="77"></div>
-  ```
-
-  ```javascript
-  angular
-      .module('app')
-      .directive('myExample', myExample);
-
-  function myExample() {
-      var directive = {
-          restrict: 'EA',
-          templateUrl: 'app/feature/example.directive.html',
-          scope: {
-              max: '='
-          },
-          controller: ExampleController,
-          controllerAs: 'vm',
-          bindToController: true
-      };
-
-      return directive;
-  }
-
-  function ExampleController() {
-      var vm = this;
-      vm.min = 3;
-      console.log('CTRL: vm.min = %s', vm.min);
-      console.log('CTRL: vm.max = %s', vm.max);
-  }
-  ```
-
-  ```html
-  <!-- example.directive.html -->
-  <div>hello world</div>
-  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
-  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
-  ```
 
 **[Back to top](#table-of-contents)**
 
