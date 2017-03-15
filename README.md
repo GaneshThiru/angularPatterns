@@ -11,9 +11,9 @@ If you are looking for an opinionated style guide for syntax, conventions, and s
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
 ## Table of Contents
-  1. [what is not AngularJS ?]
-  1. [what is AngularJS ?]
-  1. [Features of AngularJS]
+  1. [what is not AngularJS ?](#angular-not)
+  1. [what AngularJS is ?](#what-angularjs-is)
+  1. [Features of AngularJS](#features-of-angularjs)
   1. [Where we can use AngularJS]
   1. [Development support tools for Angular]
   1. [What is Gulp?]
@@ -42,6 +42,35 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Exception Handling](#exception-handling)
   1. [JSHint](#js-hint)
   1. [Angular Docs](#angular-docs)
+
+## Angular Not
+
+###### [Style [Y001](#style-y001)]
+
+  1. It's not a JavaScript library. Because, there is no functions which we can directly call and use
+  1. It's not a DOM manipulation like jQuery 
+
+## What AngularJS is
+
+###### [Style [Y001](#style-y001)]
+
+   1. AngularJS is a Javascript MVC Framework created by Google to build properly architectured and maintenable web applications.
+   1. Focus more on HTML side of web apps.
+
+## Features of AngularJS
+
+###### [Style [Y001](#style-y001)]
+
+   1.  Enhances HTML by attaching directives, custom tags, attributes, expressions, templates within HTML.
+   1.  Good for Single Page Applications (SPA).
+   1.  Easy Data Binding, Two way data Binding.
+   1.  Reusable components.
+   1.  Dependency Injection.
+   1.  E2E Testing, Unit testing is easier.
+
+
+
+
 
 ## Single Responsibility
 
