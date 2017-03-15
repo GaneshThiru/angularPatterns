@@ -34,12 +34,11 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [JSCS](#jscs)
+  1. [Values] (#Values)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [Yeoman Generator](#yeoman-generator)
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
-  1. [Filters](#filters)
   1. [Angular Docs](#angular-docs)
 
 ## Single Responsibility
@@ -2800,99 +2799,31 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 **[Back to top](#table-of-contents)**
 
-## JSCS
+## Values
 
-### Use an Options File
-###### [Style [Y235](#style-y235)]
+###### [Style [Y240](#style-y240)]
 
-  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://jscs.info/) for details on the options.
+  - Create an Angular value for app global variables.
 
-    *Why?*: Provides a first alert prior to committing any code to source control.
-
-    *Why?*: Provides consistency across your team.
+    *Why?*: Provides a way to inject globals. 
+    This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). 
+    It also allows you to mock these dependencies, where it makes sense.
 
     ```javascript
-    {
-        "excludeFiles": ["node_modules/**", "bower_components/**"],
+    // constants.js
 
-        "requireCurlyBraces": [
-            "if",
-            "else",
-            "for",
-            "while",
-            "do",
-            "try",
-            "catch"
-        ],
-        "requireOperatorBeforeLineBreak": true,
-        "requireCamelCaseOrUpperCaseIdentifiers": true,
-        "maximumLineLength": {
-          "value": 100,
-          "allowComments": true,
-          "allowRegex": true
-        },
-        "validateIndentation": 4,
-        "validateQuoteMarks": "'",
+    /* global toastr:false, moment:false */
+    (function() {
+        'use strict';
 
-        "disallowMultipleLineStrings": true,
-        "disallowMixedSpacesAndTabs": true,
-        "disallowTrailingWhitespace": true,
-        "disallowSpaceAfterPrefixUnaryOperators": true,
-        "disallowMultipleVarDecl": null,
-
-        "requireSpaceAfterKeywords": [
-          "if",
-          "else",
-          "for",
-          "while",
-          "do",
-          "switch",
-          "return",
-          "try",
-          "catch"
-        ],
-        "requireSpaceBeforeBinaryOperators": [
-            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
-            "&=", "|=", "^=", "+=",
-
-            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
-            "|", "^", "&&", "||", "===", "==", ">=",
-            "<=", "<", ">", "!=", "!=="
-        ],
-        "requireSpaceAfterBinaryOperators": true,
-        "requireSpacesInConditionalExpression": true,
-        "requireSpaceBeforeBlockStatements": true,
-        "requireLineFeedAtFileEnd": true,
-        "disallowSpacesInsideObjectBrackets": "all",
-        "disallowSpacesInsideArrayBrackets": "all",
-        "disallowSpacesInsideParentheses": true,
-
-        "jsDoc": {
-            "checkAnnotations": true,
-            "checkParamNames": true,
-            "requireParamTypes": true,
-            "checkReturnTypes": true,
-            "checkTypes": true
-        },
-
-        "disallowMultipleLineBreaks": true,
-
-        "disallowCommaBeforeLineBreak": null,
-        "disallowDanglingUnderscores": null,
-        "disallowEmptyBlocks": null,
-        "disallowTrailingComma": null,
-        "requireCommaBeforeLineBreak": null,
-        "requireDotNotation": null,
-        "requireMultipleVarDecl": null,
-        "requireParenthesesAroundIIFE": true
-    }
+        angular
+            .module('app.core')
+            .value('domain', 'http://github.com');            
+    })();
     ```
-
-**[Back to top](#table-of-contents)**
 
 ## Constants
 
-### Vendor Globals
 ###### [Style [Y240](#style-y240)]
 
   - Create an Angular Constant for vendor libraries' global variables.
@@ -2907,11 +2838,15 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         'use strict';
 
         angular
-            .module('app.core')
-            .constant('toastr', toastr)
+            .module('app.core')            
             .constant('moment', moment);
     })();
     ```
+
+## Difference between Values and Constants
+
+Value     : can be re-assigned anywhere in the application after decleration.
+Constants : can't be re-assigned in the application after decleration.
 
 ###### [Style [Y241](#style-y241)]
 
@@ -3119,32 +3054,6 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     
 **[Back to top](#table-of-contents)**
 
-## Yeoman Generator
-###### [Style [Y260](#style-y260)]
-
-You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to create an app that serves as a starting point for Angular that follows this style guide.
-
-1. Install generator-hottowel
-
-  ```
-  npm install -g generator-hottowel
-  ```
-
-2. Create a new folder and change directory to it
-
-  ```
-  mkdir myapp
-  cd myapp
-  ```
-
-3. Run the generator
-
-  ```
-  yo hottowel helloWorld
-  ```
-
-**[Back to top](#table-of-contents)**
-
 ## Routing
 Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
 
@@ -3260,16 +3169,6 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
       clientApp + '**/*.js'
     ];
     ```
-
-**[Back to top](#table-of-contents)**
-
-## Filters
-
-###### [Style [Y420](#style-y420)]
-
-  - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
-
-    *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
 **[Back to top](#table-of-contents)**
 
