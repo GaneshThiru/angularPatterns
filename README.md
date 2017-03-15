@@ -1,3 +1,5 @@
+![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/AngularJS.png)
+
 # angularPatterns
 # Angular 1 Patterns and Sample codes
 
