@@ -103,23 +103,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
 
 **[Back to top](#table-of-contents)**
 
-### Small Functions
-###### [Style [Y002](#style-y002)]
-
-  - Define small functions, no more than 75 LOC (less is better).
-
-  *Why?*: Small functions are easier to test, especially when they do one thing and serve one purpose.
-
-  *Why?*: Small functions promote reuse.
-
-  *Why?*: Small functions are easier to read.
-
-  *Why?*: Small functions are easier to maintain.
-
-  *Why?*: Small functions help avoid hidden bugs that come with large functions that share variables with external scope, create unwanted closures, or unwanted coupling with dependencies.
-
-**[Back to top](#table-of-contents)**
-
 ## IIFE
 ### JavaScript Scopes
 ###### [Style [Y010](#style-y010)]
@@ -307,7 +290,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
 ### controllerAs View Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Use the "controllerAs" syntax over the `classic controller with $scope` syntax.
 
   *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
 
@@ -471,8 +454,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
       }
   }
   ```
-
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
 
