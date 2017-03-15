@@ -6,7 +6,7 @@ Special thanks to [Bsol Systems Pvt Ltd, Bangalore](https://www.bsolsystems.com)
 
 ## Purpose
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org).
+If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with Angular.
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
@@ -33,7 +33,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
 
 ## Single Responsibility
 
-### Rule of 1
 ###### [Style [Y001](#style-y001)]
 
   - Define 1 component per file, recommended to be less than 400 lines of code.
