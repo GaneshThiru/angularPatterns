@@ -23,7 +23,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Naming](#naming)
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
-  1. [Dependency Injection]
+  1. [Dependency Injection](#dependency-injection)
   1. [Modules](#modules)
   1. [Events]
   1. [Controllers](#controllers)
@@ -51,12 +51,16 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. It's not a JavaScript library. Because, there is no functions which we can directly call and use
   1. It's not a DOM manipulation library like jQuery 
 
+**[Back to top](#table-of-contents)**
+
 ## What AngularJS is
 
 ###### [Style [Y001](#style-y001)]
 
    1. AngularJS is a Javascript MVC Framework created by Google to build properly architectured and maintenable web applications.
    1. Focus more on HTML side of web apps.
+
+**[Back to top](#table-of-contents)**
 
 ## Features of AngularJS
 
@@ -69,6 +73,8 @@ The purpose of this style guide is to provide guidance on building Angular appli
    1.  Dependency Injection.
    1.  E2E Testing, Unit testing is easier.
 
+**[Back to top](#table-of-contents)**
+
 ## Where we can use AngularJS
 
 ###### [Style [Y001](#style-y001)]
@@ -78,6 +84,8 @@ The purpose of this style guide is to provide guidance on building Angular appli
    1. RESTful applications
    1. CRUD based applications
    1. Mobile applications
+
+**[Back to top](#table-of-contents)**
 
 ## Development support tools for AngularJS
 
@@ -89,6 +97,8 @@ The purpose of this style guide is to provide guidance on building Angular appli
    1. NPM, Bower (For managing external resources/plugins) [Optional]
    1. Gulp (Task runner) [Optional]
 
+
+**[Back to top](#table-of-contents)**
 
 ## What is Gulp
 
@@ -110,12 +120,16 @@ Here are the top features of the setup:
    1. Full hinting/concatenation/uglification/sourcemaps for all prod files
    1. Dev server automatically refreshed when source changes
 
+**[Back to top](#table-of-contents)**
+
 ## How Angular app works
 
 ###### [Style [Y001](#style-y001)]
 
 ![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularFlow.PNG)
 
+
+**[Back to top](#table-of-contents)**
 
 ## Single Responsibility
 
@@ -239,6 +253,22 @@ Here are the top features of the setup:
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
 
   - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+
+**[Back to top](#table-of-contents)**
+
+### Dependency Injection
+
+###### [Style [Y020](#style-y020)]
+
+   1. The process of injecting dependent functionality into modules at run time
+
+   Two types of injection is accepted in angular modules:
+
+   1 - Using 'Constructor Function'
+![Constructor Function](https://github.com/Prem2k17/angularPatterns/blob/master/images/constructorInjection.png)
+   2 - Using 'Injectable Factory Method'
+![Injectable Factory](https://github.com/Prem2k17/angularPatterns/blob/master/images/factoryInjection.png)
+
 
 **[Back to top](#table-of-contents)**
 
