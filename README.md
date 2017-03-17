@@ -394,7 +394,7 @@ Here are the top features of the setup:
 
 ###### [Style [Y020](#style-y020)]
 
-![Events](https://github.com/Prem2k17/angularPatterns/blob/master/images/events.png)
+![Events](https://github.com/Prem2k17/angularPatterns/blob/master/images/events.PNG)
 
 **[Back to top](#table-of-contents)**
 
