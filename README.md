@@ -25,7 +25,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Application Structure](#application-structure)
   1. [Dependency Injection](#dependency-injection)
   1. [Modules](#modules)
-  1. [Events]
+  1. [Events](#events)
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
@@ -266,7 +266,8 @@ Here are the top features of the setup:
 
    1 - Using 'Constructor Function'
 ![Constructor Function](https://github.com/Prem2k17/angularPatterns/blob/master/images/constructorInjection.png)
-   2 - Using 'Injectable Factory Method'
+   2 - Using 'Injectable Factory Method'.
+
 ![Injectable Factory](https://github.com/Prem2k17/angularPatterns/blob/master/images/factoryInjection.PNG)
 
 
@@ -386,6 +387,14 @@ Here are the top features of the setup:
 
   function logger() { }
   ```
+
+**[Back to top](#table-of-contents)**
+
+## Events
+
+###### [Style [Y020](#style-y020)]
+
+![Events](https://github.com/Prem2k17/angularPatterns/blob/master/images/events.png)
 
 **[Back to top](#table-of-contents)**
 
