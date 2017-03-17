@@ -33,10 +33,9 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Data Services](#data-services)
   1. [External API call from Angular Resource ($resource)]
   1. [Directives](#directives)
-  1. [Filters]  
+  1. [Filters](#filters)
   1. [Values](#values)
   1. [Constants](#constants)
-  1. [Run Vs Config]
   1. [Routing](#routing)
   1. [Resolving Promises](#resolving-promises)
   1. [Exception Handling](#exception-handling)
@@ -726,14 +725,10 @@ Here are the top features of the setup:
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern.
-
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
-
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
 
-  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file.
 
     *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
 
@@ -1048,6 +1043,18 @@ Here are the top features of the setup:
   ```
 
     Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
+
+**[Back to top](#table-of-contents)**
+
+## Filters
+###### [Style [Y070](#style-y070)]
+
+   1. Filters format the value of an expression for display to the user
+   1. They can be used in view templates, controllers or services. 
+
+
+![Filters](https://github.com/Prem2k17/angularPatterns/blob/master/images/Filters.png)
+
 
 **[Back to top](#table-of-contents)**
 
@@ -1418,13 +1425,6 @@ Here are the top features of the setup:
 
 ## Application Structure
 
-### Overall Guidelines
-###### [Style [Y150](#style-y150)]
-
-  - Have a near term view of implementation and a long term vision. In other words, start small but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
-
-    Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
-
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
@@ -1483,8 +1483,6 @@ Here are the top features of the setup:
             session-detail.html
             session-detail.controller.js
     ```
-
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Note: Do not structure your app using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
 
