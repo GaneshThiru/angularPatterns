@@ -267,7 +267,7 @@ Here are the top features of the setup:
    1 - Using 'Constructor Function'
 ![Constructor Function](https://github.com/Prem2k17/angularPatterns/blob/master/images/constructorInjection.png)
    2 - Using 'Injectable Factory Method'
-![Injectable Factory](https://github.com/Prem2k17/angularPatterns/blob/master/images/factoryInjection.png)
+![Injectable Factory](https://github.com/Prem2k17/angularPatterns/blob/master/images/factoryInjection.PNG)
 
 
 **[Back to top](#table-of-contents)**
