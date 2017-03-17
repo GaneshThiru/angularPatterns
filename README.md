@@ -11,7 +11,7 @@ If you are looking for an opinionated style guide for syntax, conventions, and s
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
 ## Table of Contents
-  1. [what is not AngularJS ?](#angular-not)
+  1. [what is not AngularJS ?](#what-is-not-angularjs)
   1. [what AngularJS is ?](#what-angularjs-is)
   1. [Features of AngularJS](#features-of-angularjs)
   1. [Where we can use AngularJS]
@@ -43,12 +43,12 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [JSHint](#js-hint)
   1. [Angular Docs](#angular-docs)
 
-## Angular Not
+## What is not Angularjs
 
 ###### [Style [Y001](#style-y001)]
 
   1. It's not a JavaScript library. Because, there is no functions which we can directly call and use
-  1. It's not a DOM manipulation like jQuery 
+  1. It's not a DOM manipulation library like jQuery 
 
 ## What AngularJS is
 
