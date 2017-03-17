@@ -16,8 +16,8 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Features of AngularJS](#features-of-angularjs)
   1. [Where we can use AngularJS](#where-we-can-use-angularjs)
   1. [Development support tools for Angular](#development-support-tools-for-angularjs)
-  1. [What is Gulp?](#what-is-gulp?)
-  1. [Lifecycle of Angular Framework]
+  1. [What is Gulp?](#what-is-gulp)
+  1. [How Angular app works?](#how-angular-app-works)
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)  
   1. [Naming](#naming)
@@ -90,12 +90,31 @@ The purpose of this style guide is to provide guidance on building Angular appli
    1. Gulp (Task runner) [Optional]
 
 
-## What is Gulp?
+## What is Gulp
 
 ###### [Style [Y001](#style-y001)]
 
+   1. Gulp is a task runner. It is the commander of our army of helper robots that take critical, yet totally mundane, tasks and perform them hundreds of times per day so we don't have to. When we sit down to work, we want to enter a single command, and then spend the rest of our day writing code testing, and basically not thinking about how it is all glued together in the background.
+
+   1. Automation is critical to any project of significant size. We will start with the Eggly Bookmarks application, and develop proper build automation that will include production ready tools that you can start using in your applications today!
 
 
+Here are the top features of the setup:
+
+   1. Development and production environments
+   1. A development server that can serve either environment
+   1. Watch tasks for both environments
+   1. Live-reload capability—web page is auto-refreshed on change
+   1. Uses Foundation/SASS
+   1. Partials pre-loaded into the angular template cache
+   1. Full hinting/concatenation/uglification/sourcemaps for all prod files
+   1. Dev server automatically refreshed when source changes
+
+## How Angular app works
+
+###### [Style [Y001](#style-y001)]
+
+![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularFlow.png)
 
 
 ## Single Responsibility
