@@ -114,7 +114,7 @@ Here are the top features of the setup:
 
 ###### [Style [Y001](#style-y001)]
 
-![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularFlow.png)
+![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/AngularFlow.PNG)
 
 
 ## Single Responsibility
