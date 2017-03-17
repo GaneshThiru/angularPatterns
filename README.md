@@ -29,9 +29,8 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
-  1. [Services Vs Factory]
+  1. [Services Vs Factory](#services-vs-factory)
   1. [Data Services](#data-services)
-  1. [External API call from Angular Resource ($resource)]
   1. [Directives](#directives)
   1. [Filters](#filters)
   1. [Values](#values)
@@ -41,7 +40,6 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Exception Handling](#exception-handling)
   1. [JSHint](#js-hint)
   1. [Angular Docs](#angular-docs)
-  1. [Reference]
 
 ## What is not Angularjs
 
@@ -950,6 +948,14 @@ Here are the top features of the setup:
 
 **[Back to top](#table-of-contents)**
 
+## Services Vs Factories
+
+###### [Style [Y070](#style-y070)]
+
+![Sample App Structure](https://github.com/Prem2k17/angularPatterns/blob/master/images/servicesFactoies.PNG)
+
+**[Back to top](#table-of-contents)**
+
 ## Directives
 ### Limit 1 Per File
 ###### [Style [Y070](#style-y070)]
@@ -1053,7 +1059,7 @@ Here are the top features of the setup:
    1. They can be used in view templates, controllers or services. 
 
 
-![Filters](https://github.com/Prem2k17/angularPatterns/blob/master/images/Filters.png)
+![Filters](https://github.com/Prem2k17/angularPatterns/blob/master/images/Filters.PNG)
 
 
 **[Back to top](#table-of-contents)**
