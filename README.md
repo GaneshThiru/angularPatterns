@@ -14,9 +14,9 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [what is not AngularJS ?](#what-is-not-angularjs)
   1. [what AngularJS is ?](#what-angularjs-is)
   1. [Features of AngularJS](#features-of-angularjs)
-  1. [Where we can use AngularJS]
-  1. [Development support tools for Angular]
-  1. [What is Gulp?]
+  1. [Where we can use AngularJS](#where-we-can-use-angularjs)
+  1. [Development support tools for Angular](#development-support-tools-for-angularjs)
+  1. [What is Gulp?](#what-is-gulp?)
   1. [Lifecycle of Angular Framework]
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)  
@@ -42,6 +42,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Exception Handling](#exception-handling)
   1. [JSHint](#js-hint)
   1. [Angular Docs](#angular-docs)
+  1. [Reference]
 
 ## What is not Angularjs
 
@@ -67,6 +68,31 @@ The purpose of this style guide is to provide guidance on building Angular appli
    1.  Reusable components.
    1.  Dependency Injection.
    1.  E2E Testing, Unit testing is easier.
+
+## Where we can use AngularJS
+
+###### [Style [Y001](#style-y001)]
+
+   1. Single Page Applications (SPA)
+   1. Dynamic web applications
+   1. RESTful applications
+   1. CRUD based applications
+   1. Mobile applications
+
+## Development support tools for AngularJS
+
+###### [Style [Y001](#style-y001)]
+   1. Eclipse or VSC (Visual studio code) [Code Editor]
+   1. Google Chrome browser (Recommended)
+   1. NodeJS (For client server) [Optional]
+   1. GitHub (For accessing external repositories) [Optional]
+   1. NPM, Bower (For managing external resources/plugins) [Optional]
+   1. Gulp (Task runner) [Optional]
+
+
+## What is Gulp?
+
+###### [Style [Y001](#style-y001)]
 
 
 
