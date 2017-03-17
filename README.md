@@ -29,7 +29,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
-  1. [Services Vs Factory](#services-vs-factory)
+  1. [Services Vs Factory](#services-vs-factories)
   1. [Data Services](#data-services)
   1. [Directives](#directives)
   1. [Filters](#filters)
