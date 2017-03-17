@@ -12,5 +12,14 @@
              * Application dependencies
              * |
              */
+
+            /**For UI-routing module*/
+            'ui.router',
+
+            /**Custom modules */
+            'admin',
+            'employee'
+
+
         ])
 })();

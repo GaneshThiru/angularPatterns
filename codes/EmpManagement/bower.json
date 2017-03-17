@@ -1,0 +1,14 @@
+{
+  "name": "angularPatterns",
+  "homepage": "https://github.com/Prem2k17/angularPatterns",
+  "authors": [
+    "Prem"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-ui-router": "^0.4.2"
+  }
+}

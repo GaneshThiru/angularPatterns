@@ -1,0 +1,19 @@
+{
+  "name": "empmanagement",
+  "version": "1.0.0",
+  "description": "Sample app",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Prem2k17/angularPatterns/tree/master/codes/EmpManagement"
+  },
+  "author": "Prem",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}

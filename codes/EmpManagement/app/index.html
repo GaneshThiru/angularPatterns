@@ -1,0 +1,34 @@
+<html ng-app="empApp"><!--Add your main module here-->
+<head>
+ <title>Emp Management</title>
+<!--Plugin Styles-->
+
+<!--Application Styles-->
+
+</head>
+<body>
+
+<div ui-view="root"></div>
+
+
+<!--Plugin modules-->
+<!--Angular Plugin-->
+<script src="plugins/angular/angular.js"></script>
+<!--Angular UI-Router-->
+<script src="plugins/angular-ui-router/release/angular-ui-router.js"></script>
+<!--Admin Modules-->
+<script src="modules/admin/admin.module.js"></script>
+<script src="modules/admin/admin.controller.js"></script>
+<script src="modules/admin/admin.config.js"></script>
+
+<!--Employee Modules-->
+<script src="modules/employee/emp.module.js"></script>
+<script src="modules/employee/emp.controller.js"></script>
+<script src="modules/employee/emp.config.js"></script>
+
+<!--Application modules-->
+<script src="app.module.js"></script>
+<script src="app.controller.js"></script>
+<script src="app.config.js"></script>
+</body>
+</html>
