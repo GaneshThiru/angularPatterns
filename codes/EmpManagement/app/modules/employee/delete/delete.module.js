@@ -2,5 +2,5 @@
 {
     'use strict';    
     angular
-        .module('admin',[])
+        .module('delete',[])
 })();

@@ -15,7 +15,8 @@
         $stateProvider  	
         //Common Template Page for all modules
     	.state('main', {
-          url: "/main",         
+          url: "/main",
+              
           views    : {
               'root@'                      : {
                   templateUrl: 'templates/main.html',

@@ -12,5 +12,8 @@
              * Application dependencies
              * |
              */
+            'create',
+            'update',
+            'delete'
         ])
 })();

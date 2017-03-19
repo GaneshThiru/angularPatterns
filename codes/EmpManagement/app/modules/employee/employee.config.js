@@ -14,7 +14,7 @@
           url: "/employee",         
           views    : {
               'module@main'                      : {
-                  templateUrl: 'modules/employee/emp.html',
+                  templateUrl: 'modules/employee/employee.html',
                   controller : 'employeeController as emp'
               }
           }

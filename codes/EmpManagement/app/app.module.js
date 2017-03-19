@@ -16,8 +16,7 @@
             /**For UI-routing module*/
             'ui.router',
 
-            /**Custom modules */
-            'admin',
+            /**Custom modules */            
             'employee'
 
 

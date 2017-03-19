@@ -3,6 +3,7 @@
  <title>Emp Management</title>
 <!--Plugin Styles-->
 
+<link rel="stylesheet" type="text/css" href="plugins/bootstrap/dist/css/bootstrap.min.css">
 <!--Application Styles-->
 
 </head>
@@ -12,19 +13,35 @@
 
 
 <!--Plugin modules-->
+
+<!-- JQuery -->
+<script src="plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 <!--Angular Plugin-->
 <script src="plugins/angular/angular.js"></script>
 <!--Angular UI-Router-->
 <script src="plugins/angular-ui-router/release/angular-ui-router.js"></script>
-<!--Admin Modules-->
-<script src="modules/admin/admin.module.js"></script>
-<script src="modules/admin/admin.controller.js"></script>
-<script src="modules/admin/admin.config.js"></script>
+<!--Create Modules-->
+<script src="modules/employee/create/create.module.js"></script>
+<script src="modules/employee/create/create.controller.js"></script>
+<script src="modules/employee/create/create.config.js"></script>
+
+<!--Update Modules-->
+<script src="modules/employee/update/update.module.js"></script>
+<script src="modules/employee/update/update.controller.js"></script>
+<script src="modules/employee/update/update.config.js"></script>
+
+<!--Delete Modules-->
+<script src="modules/employee/delete/delete.module.js"></script>
+<script src="modules/employee/delete/delete.controller.js"></script>
+<script src="modules/employee/delete/delete.config.js"></script>
+
 
 <!--Employee Modules-->
-<script src="modules/employee/emp.module.js"></script>
-<script src="modules/employee/emp.controller.js"></script>
-<script src="modules/employee/emp.config.js"></script>
+<script src="modules/employee/employee.module.js"></script>
+<script src="modules/employee/employee.controller.js"></script>
+<script src="modules/employee/employee.config.js"></script>
 
 <!--Application modules-->
 <script src="app.module.js"></script>
