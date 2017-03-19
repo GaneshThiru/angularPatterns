@@ -9,7 +9,7 @@
     function appController(){
         var ap = this;
         ap.loginType = 'Admin';
-        alert('appController')
+      
     }
 
 })();

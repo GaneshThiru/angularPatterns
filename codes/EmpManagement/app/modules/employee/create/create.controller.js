@@ -6,11 +6,22 @@
         .module('create')
         .controller('createController', createController);
 
-    function createController(){
-       alert('Create controller');
-
+    function createController($scope,empApi){
+     
        $scope.submit = function(){
-           alert("inside submit..")
+          
+        empApi.save({
+      'id': $scope.id,
+      'name': $scope.name,
+      'designation': $scope.designation
+    },
+    function(response) {
+       // alert("Response: "+ JSON.stringify(response));
+    },
+    function(error) {
+      
+        alert("err:"+JSON.stringify(error));
+    });
        }
 
     }

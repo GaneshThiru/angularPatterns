@@ -15,6 +15,7 @@
 
             /**For UI-routing module*/
             'ui.router',
+            'ngResource',
 
             /**Custom modules */            
             'employee'

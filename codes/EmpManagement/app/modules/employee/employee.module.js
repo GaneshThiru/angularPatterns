@@ -13,6 +13,7 @@
              * |
              */
             'create',
+            'read',
             'update',
             'delete'
         ])

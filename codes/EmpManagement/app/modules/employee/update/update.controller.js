@@ -6,8 +6,13 @@
         .module('update')
         .controller('updateController', updateController);
 
-    function updateController(){
-        alert('Update controller');
+    function updateController(empApi,$scope){
+        //alert('Update controller');
+
+        $scope.search = function(){
+
+        }
+
     }
 
 })();
