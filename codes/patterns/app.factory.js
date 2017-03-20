@@ -7,7 +7,17 @@
         .factory('sampleFactory', sampleFactory);
 
     function sampleFactory(){
+		var sampleFactory = 
+		{        
+        getData: getData        
+        };
+    return sampleFactory;
 
+    ////////////
+
+    function getData() {
+        return '100';
+    };
     }
 
 })();
