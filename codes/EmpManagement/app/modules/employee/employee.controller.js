@@ -6,8 +6,9 @@
         .module('employee')
         .controller('employeeController', employeeController);
 
-    function employeeController(empApi){
+    function employeeController(empApi,empService){
 
+       
 
 
     }
