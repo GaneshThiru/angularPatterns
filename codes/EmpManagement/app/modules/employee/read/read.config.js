@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('read')
+        .module('employee.read')
         .config(readConfig);
 
     function readConfig($stateProvider, $urlRouterProvider){        

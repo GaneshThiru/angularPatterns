@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('update')
+        .module('employee.update')
         .config(updateConfig);
 
     function updateConfig($stateProvider, $urlRouterProvider){        

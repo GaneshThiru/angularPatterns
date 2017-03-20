@@ -2,5 +2,5 @@
 {
     'use strict';    
     angular
-        .module('read',[])
+        .module('employee.read',[])
 })();

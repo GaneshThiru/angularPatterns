@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('create')
+        .module('employee.create')
         .config(createConfig);
 
     function createConfig($stateProvider, $urlRouterProvider){        

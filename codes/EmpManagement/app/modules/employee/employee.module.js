@@ -12,9 +12,9 @@
              * Application dependencies
              * |
              */
-            'create',
-            'read',
-            'update',
-            'delete'
+            'employee.create',
+            'employee.read',
+            'employee.update',
+            'employee.delete'
         ])
 })();

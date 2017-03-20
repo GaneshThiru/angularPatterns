@@ -2,5 +2,5 @@
 {
     'use strict';    
     angular
-        .module('create',[])
+        .module('employee.create',[])
 })();

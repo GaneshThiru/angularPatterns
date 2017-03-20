@@ -2,5 +2,5 @@
 {
     'use strict';    
     angular
-        .module('update',[])
+        .module('employee.update',[])
 })();

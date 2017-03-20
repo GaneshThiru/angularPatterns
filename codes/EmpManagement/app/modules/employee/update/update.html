@@ -1,7 +1,10 @@
-Enter Id : <input type="number" ng-model="id">
+Enter Id : <input type="number" ng-model="id" ng-change="validId = false;">
+<div ng-show="validId">
 <br>
-Name : <input type="text" ng-model="name" ng-show="validId">
+Name : <input type="text" ng-model="name">
 <br>
-Designation : <input type="text" ng-model="designation" ng-show="validId">
+Designation : <input type="text" ng-model="designation">
+</div>
+<input type="button" ng-click="search(id)" value="search" ng-show="!validId"/>
 
-<input type="button" ng-click="search()" value="search"/>
+<input type="button" ng-click="update()" value="Update" ng-show="validId"/>

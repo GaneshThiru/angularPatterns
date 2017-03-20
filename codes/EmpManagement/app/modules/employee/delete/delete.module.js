@@ -2,5 +2,5 @@
 {
     'use strict';    
     angular
-        .module('delete',[])
+        .module('employee.delete',[])
 })();

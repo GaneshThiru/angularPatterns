@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('delete')
+        .module('employee.delete')
         .config(deleteConfig);
 
     function deleteConfig($stateProvider, $urlRouterProvider){        

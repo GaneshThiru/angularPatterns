@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('read')
+        .module('employee.read')
         .controller('readController', readController);
 
     function readController(empApi,$scope){
-    empApi.query({},
+    empApi.employees().query({},
     function(response) {
         $scope.empArr = response;        
     },
